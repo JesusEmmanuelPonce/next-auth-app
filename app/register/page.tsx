@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Controller, useForm } from 'react-hook-form'
 import { formSchema, RegisterFormValues } from '../features/register/register.schema'
+import { registerAction } from '../features/register/register.action'
 
 const Register = () => {
 
@@ -20,7 +21,9 @@ const Register = () => {
   })
 
   const onSubmit = async (data: RegisterFormValues) => {
-    console.log(data)
+    const response = await registerAction(data)
+
+    console.log({ response })
   }
 
   return (
