@@ -22,8 +22,11 @@ const Register = () => {
 
   const onSubmit = async (data: RegisterFormValues) => {
     const response = await registerAction(data)
-
-    console.log({ response })
+    if (response?.error) {
+      form.setError('email', {
+        message: response?.message
+      })
+    }
   }
 
   return (
